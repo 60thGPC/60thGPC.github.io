@@ -12,3 +12,6 @@ td {
     padding: 3px 8px;
     border: 1px solid;
 }
+.right {
+    text-align: right;
+}
