@@ -2,6 +2,10 @@ table {
     border: 1px solid;
     border-collapse: collapse;
 }
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
 tr:nth-child(odd) {background: #CCC}
 tr:nth-child(even) {background: #FFF}
 th {

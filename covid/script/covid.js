@@ -132,9 +132,10 @@ COVID.buildTable = function(tableData) {
     $(tableData).each(function (index, val) {
         var $tr = $("<tr></tr>");
 
-        var infPer100 = (Math.round((val.attributes.Infections_per_100k + Number.EPSILON) * 100) / 100).toFixed(2);
-        var R0 = (Math.round((val.attributes.R0 + Number.EPSILON) * 100) / 100).toFixed(2);
-        var doublingRate = (Math.round((val.attributes.Doubling_Rate + Number.EPSILON) * 100) / 100).toFixed(2);
+        var eps = Number.EPSILON || COVID.getEpsilon();
+        var infPer100 = (Math.round((val.attributes.Infections_per_100k + eps) * 100) / 100).toFixed(2);
+        var R0 = (Math.round((val.attributes.R0 + eps) * 100) / 100).toFixed(2);
+        var doublingRate = (Math.round((val.attributes.Doubling_Rate + eps) * 100) / 100).toFixed(2);
 
         // Use the English Name if it's there...
         var name = val.attributes.ENG_NAME || val.attributes.NAME;
@@ -155,3 +156,10 @@ COVID.buildTable = function(tableData) {
 
     $table.show();
 };
+
+COVID.getEpsilon = function() {
+    var e = 1.0;
+    while ( ( 1.0 + 0.5 * e ) !== 1.0 )
+      e *= 0.5;
+    return e;
+}
