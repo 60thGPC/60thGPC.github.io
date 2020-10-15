@@ -2,7 +2,8 @@ table {
     border: 1px solid;
     border-collapse: collapse;
 }
-tr:nth-child(even) {background: #E8E8E8}
+tr:nth-child(odd) {background: #CCC}
+tr:nth-child(even) {background: #FFF}
 th {
     font-weight: bold;
     padding: 3px 8px;
