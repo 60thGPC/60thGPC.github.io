@@ -126,6 +126,18 @@ COVID.buildItalyTable = function(region) {
     COVID.buildTable(filteredData);
 };
 
+COVID.buildCompetitorsTable = function() {
+    var nutsUrl = "https://services6.arcgis.com/swIsfiMN39u9wKrT/ArcGIS/rest/services/NUTS/FeatureServer/0/query?where=&objectIds=45%2C53%2C57%2C58&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=Date%2CENG_NAME%2CTotal_New%2CDaily_New%2CTotal_Deaths%2CDaily_Deaths%2CTotal_Recovered%2CDaily_Recovered%2CInfections_per_100k%2CR0%2CDoubling_Rate&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=ENG_NAME&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=";
+    
+    $.getJSON(nutsUrl, function(data) {
+        retData = data.features;
+    });
+
+    var filteredData = retData;
+
+    COVID.buildTable(filteredData);
+};
+
 COVID.buildTable = function(tableData) {
     var $table = $('#nutsTable');
 
